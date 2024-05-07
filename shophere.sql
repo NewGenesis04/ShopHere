@@ -109,10 +109,6 @@ BEGIN
 END;
 
 
---PROCEDURES
-CREATE PROCEDURE order_total_cost()
-
-
 
 --@block
 --PROCEDURES
