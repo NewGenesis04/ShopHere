@@ -64,29 +64,23 @@ CREATE TABLE Product_category(
 
 --TRIGGERS
 
---@block-- Create a trigger to prevent insertion or modification if QuantityInHand is 0
+--@Block
 
-
-CREATE TRIGGER prevent_zero_quantity_insert
-BEFORE INSERT ON Item_details
+CREATE TRIGGER update_quantity_in_hand
+AFTER INSERT ON Order_details
 FOR EACH ROW
 BEGIN
-    IF NEW.quantity_in_hand = 0 THEN
-        SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = 'quantity_in_hand must be greater than 0';
-    END IF;
+    UPDATE Item_details
+    SET quantity_in_hand = quantity_in_hand + NEW.quantity_received
+    WHERE item_id = NEW.item_id;
 END;
 
-
-CREATE TRIGGER prevent_zero_quantity_update
-BEFORE UPDATE ON Item_details
+--@block
+CREATE TRIGGER Update_Quantity_In_Hand_On_Update
+AFTER UPDATE ON Order_details
 FOR EACH ROW
 BEGIN
-    IF NEW.quantity_in_hand = 0 THEN
-        SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = 'quantity_in_hand must be greater than 0';
-    END IF;
-END
-
-
---@Block
+    UPDATE Item_details
+    SET quantity_in_hand = (quantity_in_hand - OLD.quantity_received) + NEW.quantity_received
+    WHERE item_id = NEW.item_id;
+END;
