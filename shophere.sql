@@ -84,3 +84,50 @@ BEGIN
     SET quantity_in_hand = (quantity_in_hand - OLD.quantity_received) + NEW.quantity_received
     WHERE item_id = NEW.item_id;
 END;
+
+
+--@block
+--PROCEDURES
+
+--@block
+CREATE PROCEDURE total_cost_for_order(IN id INT)
+BEGIN
+    DECLARE order_cost DECIMAL(10, 2);
+    DECLARE received_quantity INT;
+    DECLARE item_price DECIMAL(10, 2);
+
+
+    SELECT quantity_received, unit_price INTO received_quantity, item_price
+    FROM Order_details
+    WHERE purchase_order_id = id;
+
+    SET order_cost = received_quantity * item_price;
+
+    SELECT order_cost AS Total_Order_Cost;
+END;
+
+
+--@block Test Procedure
+CALL total_cost_for_order(31);
+
+
+
+
+--@block
+CREATE PROCEDURE total_orders_for_employee_month(IN employee_id INT, IN target_month INT)
+BEGIN
+    DECLARE total_order_cost DECIMAL(10, 2);
+
+    -- Calculate the total order cost for the specified employee and month
+    SELECT SUM(quantity_ordered * unit_price) INTO total_order_cost
+    FROM Order_Details
+    WHERE employee_id = employee_id
+    AND MONTH(order_date) = target_month;
+
+    -- Return the total order cost
+    SELECT total_order_cost AS Total_Order_Costs;
+    
+END;
+
+--@block
+CALL total_orders_for_employee_month(6, 4);
