@@ -62,6 +62,29 @@ CREATE TABLE Product_category(
 );
 
 
+
+
+
+
+--CONSTRAINTS
+--@block
+ALTER TABLE Order_Details
+ADD CONSTRAINT chk_receiving_date CHECK (recieving_date > order_date);
+
+--@block
+--INDEXES
+
+--@block
+CREATE INDEX idx_order_date_month_year ON Order_details (order_date);
+
+--@block
+CREATE INDEX idx_order_year ON Order_details (order_date);
+
+--@block
+CREATE INDEX idx_order_on_suppliers ON Order_Details (item_id);
+
+
+--@block
 --TRIGGERS
 
 --@Block
@@ -84,3 +107,8 @@ BEGIN
     SET quantity_in_hand = (quantity_in_hand - OLD.quantity_received) + NEW.quantity_received
     WHERE item_id = NEW.item_id;
 END;
+
+
+--PROCEDURES
+CREATE PROCEDURE order_total_cost()
+

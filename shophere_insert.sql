@@ -103,3 +103,9 @@ INSERT INTO Order_Details (employee_id, order_date, recieving_date, item_id, qua
 
 --@block
 SELECT * FROM item_details;
+
+--@block
+SELECT * FROM order_details;
+
+--@block
+SELECT * FROM supplier_details;
