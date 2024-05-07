@@ -58,6 +58,7 @@ INSERT INTO Item_details (item_name, item_description, unit_price, quantity_in_h
 ('Backpack', 'Durable backpack', 49.99, 50, 10, 20, 10, 10);
 
 
+
 --@block
 INSERT INTO Order_Details (employee_id, order_date, recieving_date, item_id, quantity_ordered, quantity_received, unit_price, ship_method, order_status) VALUES
 (1, '2024-04-01', '2024-04-10', 1, 5, 5, 999.99, 'truck', 'Received'),
@@ -71,7 +72,34 @@ INSERT INTO Order_Details (employee_id, order_date, recieving_date, item_id, qua
 (9, '2024-04-09', '2024-04-18', 9, 4, 4, 79.99, 'plane', 'Cancelled'),
 (10, '2024-04-10', '2024-04-19', 10, 3, 3, 49.99, 'ship', 'In Transit');
 
+--@block
+INSERT INTO Order_Details (employee_id, order_date, recieving_date, item_id, quantity_ordered, quantity_received, unit_price, ship_method, order_status) VALUES
+(1, '2024-04-11', '2024-04-20', 1, 7, 7, 999.99, 'truck', 'Received'),
+(1, '2024-04-12', '2024-04-21', 2, 3, 3, 149.99, 'car', 'Received'),
+(3, '2024-04-13', '2024-04-22', 3, 2, 2, 199.99, 'bike', 'In Transit'),
+(4, '2024-04-14', '2024-04-23', 4, 4, 4, 29.99, 'plane', 'Received'),
+(5, '2024-04-15', '2024-04-24', 5, 3, 3, 19.99, 'ship', 'Received'),
+(6, '2024-04-16', '2024-04-25', 6, 2, 2, 899.99, 'truck', 'Cancelled'),
+(7, '2024-04-17', '2024-04-26', 7, 2, 2, 999.99, 'car', 'Received'),
+(8, '2024-04-18', '2024-04-27', 8, 15, 15, 19.99, 'bike', 'Received'),
+(9, '2024-04-19', '2024-04-28', 9, 6, 6, 79.99, 'plane', 'Received'),
+(2, '2024-04-20', '2024-04-29', 10, 5, 5, 59.99, 'ship', 'Received');
 
 
 --@block
-SELECT * FROM ShopHere;
+INSERT INTO Order_Details (employee_id, order_date, recieving_date, item_id, quantity_ordered, quantity_received, unit_price, ship_method, order_status) VALUES
+(1, '2024-04-11', '2024-04-20', 1, 7, 7, 999.99, 'truck', 'Received'),
+(1, '2024-04-12', '2024-04-21', 2, 3, 3, 149.99, 'car', 'Received'),
+(3, '2024-04-13', '2024-04-22', 3, 2, 2, 199.99, 'bike', 'In Transit'),
+(1, '2024-04-14', '2024-04-23', 4, 4, 4, 29.99, 'plane', 'Received'),
+(5, '2024-04-15', '2024-04-24', 5, 3, 3, 19.99, 'ship', 'Received'),
+(6, '2024-04-16', '2024-04-25', 6, 2, 2, 899.99, 'truck', 'Cancelled'),
+(1, '2024-04-17', '2024-04-26', 7, 2, 2, 999.99, 'car', 'Received'),
+(8, '2024-04-18', '2024-04-27', 8, 15, 15, 19.99, 'bike', 'Received'),
+(1, '2024-04-19', '2024-04-28', 9, 6, 6, 79.99, 'plane', 'Received'),
+(2, '2024-04-20', '2024-04-29', 10, 5, 5, 59.99, 'ship', 'Received');
+
+
+
+--@block
+SELECT * FROM item_details;
